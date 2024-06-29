@@ -8,12 +8,21 @@ import random
 
 def generate_skill_score() -> int:
     """
-    Generate a random skill score between 1 and 100.
+    Generate a random skill score between 1 and 100 using a normal distribution.
 
     Returns:
         int: A random skill score.
     """
-    return random.randint(1, 100)
+    mean = 50
+    std_dev = 25
+
+    score = round(random.gauss(mean, std_dev))
+    if 1 <= score <= 100:
+        return score
+    elif score < 1:
+        return 1
+
+    return 100
 
 
 def generate_error_std() -> float:
